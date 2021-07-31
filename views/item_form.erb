@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<form action="/items" method="POST">
+  <div class="container">
+    <h1>Input Item</h1>
+    <label for="name">Item name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price"><br><br>
+
+    <label for="category_id">Category : </label>
+    <select name="category_id" id="category_id">
+        <% categories.each do |category| %>
+          <option value=<%= category.id %>><%= category.name %></option>
+        <% end %>
+    </select>
+
+    <br><br>
+    <button type="submit" class="save">Save</button>
+  </div>
+</form>
+<p>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<form action="/categories/update" method="POST">
+  <div class="container">
+    <h1>Category</h1>
+    <input type="hidden" id="id" name= "id" value = <%= category.id %>>
+    <label for="name">Category name:</label>
+    <input type="text" id="name" name="name" value=<%= category.name %>><br><br>
+
+    <br><br>
+    <button type="submit" class="save">Update</button>
+  </div>
+</form>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    <% items.each do |item| %>
+    <form>
+    <tr>
+        <input id="name" name= "name" type="hidden" value = <%= item.name%>>
+        <td><%= item.name %></td>
+
+        <input id="price" name= "price" type="hidden" value = <%= item.price%>>
+        <td><%= item.price %></td>
+
+        <input id="id" name= "id" type="hidden" value = <%= item.id%>>
+        <td><button type="submit" class="delete" formaction="/items/delete" formmethod="post">Delete</button>
+        <button type="submit" class="update" formaction="/items/show" formmethod="post">Update</button></td>
+    </tr>
+    </form>
+    <% end %>
+</table>
+
+<a href='/items/add' method='get'>Add </a>
+</body>
+</html>
+
+</body>
+</html>

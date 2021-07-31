@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Action</th>
+    </tr>
+    <% items.each do |item| %>
+    <form>
+    <tr>
+        <input id="name" name= "name" type="hidden" value = <%= item.name%>>
+        <td><%= item.name %></td>
+
+        <input id="price" name= "price" type="hidden" value = <%= item.price%>>
+        <td><%= item.price %></td>
+
+        <input id="category" name= "category" type="hidden" value = <%= item.category.id%>>
+        <td><%= item.category.name %></td>
+
+        <input id="id" name= "id" type="hidden" value = <%= item.id%>>
+        <td><button type="submit" class="delete" formaction="/items/delete" formmethod="post">Delete</button>
+        <button type="submit" class="update" formaction="/items/show" formmethod="post">Update</button></td>
+    </tr>
+    </form>
+    <% end %>
+</table>
+
+<a href='/items/add' method='get'>Add </a>
+<br>
+<a href='/categories' method='get'> View Categories </a>
+</body>
+</html>
+
+</body>
+</html>
